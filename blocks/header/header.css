@@ -5,7 +5,7 @@ header .nav-wrapper {
   z-index: 2;
   position: fixed;
 }
-
+ 
 header nav {
   box-sizing: border-box;
   display: grid;
@@ -20,7 +20,7 @@ header nav {
   padding: 0 24px;
   font-family: var(--body-font-family);
 }
-
+ 
 header nav[aria-expanded='true'] {
   grid-template:
     'hamburger brand' var(--nav-height)
@@ -29,31 +29,44 @@ header nav[aria-expanded='true'] {
   overflow-y: auto;
   min-height: 100dvh;
 }
-
+ 
 @media (width >= 900px) {
   header nav {
     display: flex;
     justify-content: space-between;
     gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
+    max-width: 100%;
+   
+    /* max-width: 1400px; */
+ 
+    /* padding: 0 32px; */
+    padding: 0;
+    flex-direction: column;
   }
-
+ 
   header nav[aria-expanded='true'] {
     min-height: 0;
     overflow: visible;
+    flex-direction: column;
+  }
+ 
+  header .nav-brand .default-content-wrapper{
+    margin-right: 20px;
   }
 }
-
+ 
 header nav p {
   margin: 0;
   line-height: 1;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
 }
-
+ 
 header nav a:any-link {
   color: currentcolor;
 }
-
+ 
 /* hamburger */
 header nav .nav-hamburger {
   grid-area: hamburger;
@@ -61,7 +74,7 @@ header nav .nav-hamburger {
   display: flex;
   align-items: center;
 }
-
+ 
 header nav .nav-hamburger button {
   height: 22px;
   margin: 0;
@@ -74,7 +87,7 @@ header nav .nav-hamburger button {
   text-overflow: initial;
   white-space: initial;
 }
-
+ 
 header nav .nav-hamburger-icon,
 header nav .nav-hamburger-icon::before,
 header nav .nav-hamburger-icon::after {
@@ -83,14 +96,14 @@ header nav .nav-hamburger-icon::after {
   position: relative;
   width: 20px;
 }
-
+ 
 header nav .nav-hamburger-icon::before,
 header nav .nav-hamburger-icon::after {
   content: '';
   position: absolute;
   background: currentcolor;
 }
-
+ 
 header nav[aria-expanded='false'] .nav-hamburger-icon,
 header nav[aria-expanded='false'] .nav-hamburger-icon::before,
 header nav[aria-expanded='false'] .nav-hamburger-icon::after {
@@ -98,19 +111,19 @@ header nav[aria-expanded='false'] .nav-hamburger-icon::after {
   border-radius: 2px;
   background: currentcolor;
 }
-
+ 
 header nav[aria-expanded='false'] .nav-hamburger-icon::before {
   top: -6px;
 }
-
+ 
 header nav[aria-expanded='false'] .nav-hamburger-icon::after {
   top: 6px;
 }
-
+ 
 header nav[aria-expanded='true'] .nav-hamburger-icon {
   height: 22px;
 }
-
+ 
 header nav[aria-expanded='true'] .nav-hamburger-icon::before,
 header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   top: 3px;
@@ -121,20 +134,20 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   height: 2px;
   border-radius: 2px;
 }
-
+ 
 header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   top: unset;
   bottom: 3px;
   transform: rotate(-45deg);
 }
-
+ 
 @media (width >= 900px) {
   header nav .nav-hamburger {
     display: none;
     visibility: hidden;
   }
 }
-
+ 
 /* brand */
 header .nav-brand {
   grid-area: brand;
@@ -142,13 +155,17 @@ header .nav-brand {
   font-size: var(--heading-font-size-s);
   font-weight: 700;
   line-height: 1;
+  width: 100%;
+  text-align: end;
+  padding: 15px 0;
+  background-color: #f3f4f6;
 }
-
+ 
 header nav .nav-brand img {
   width: 128px;
   height: auto;
 }
-
+ 
 /* sections */
 header nav .nav-sections {
   grid-area: sections;
@@ -156,48 +173,57 @@ header nav .nav-sections {
   display: none;
   visibility: hidden;
 }
-
+ 
 header nav[aria-expanded='true'] .nav-sections {
   display: block;
   visibility: visible;
   align-self: start;
 }
-
+ 
 header nav .nav-sections ul {
   list-style: none;
   padding-left: 0;
   font-size: var(--body-font-size-s);
 }
-
+ 
 header nav .nav-sections ul > li {
   font-weight: 500;
 }
-
+ 
 header nav .nav-sections ul > li > ul {
   margin-top: 0;
 }
-
+ 
 header nav .nav-sections ul > li > ul > li {
   font-weight: 400;
 }
-
+ 
 @media (width >= 900px) {
   header nav .nav-sections {
     display: block;
     visibility: visible;
     white-space: nowrap;
+    width: 100%;
   }
-
+ 
+  header nav .nav-sections .default-content-wrapper{
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 20px;
+  }
+ 
   header nav[aria-expanded='true'] .nav-sections {
     align-self: unset;
   }
-
+ 
   header nav .nav-sections .nav-drop {
     position: relative;
     padding-right: 16px;
     cursor: pointer;
   }
-
+ 
   header nav .nav-sections .nav-drop::after {
     content: '';
     display: inline-block;
@@ -211,40 +237,41 @@ header nav .nav-sections ul > li > ul > li {
     border-radius: 0 1px 0 0;
     border-width: 2px 2px 0 0;
   }
-
+ 
   header nav .nav-sections .nav-drop[aria-expanded='true']::after {
     top: unset;
     bottom: 0.5em;
     transform: rotate(315deg);
   }
-
+ 
   header nav .nav-sections ul {
     display: flex;
     gap: 24px;
     margin: 0;
   }
-
+ 
   header nav .nav-sections .default-content-wrapper > ul > li {
     flex: 0 1 auto;
     position: relative;
   }
-
+ 
   header nav .nav-sections .default-content-wrapper > ul > li > ul {
     display: none;
     position: relative;
   }
-
+ 
   header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
-    display: block;
-    position: absolute;
-    left: -24px;
-    width: 200px;
-    top: 150%;
+    display: flex;
+    position: fixed;
+    left: 0;
+    width: 99%;
+    top: 105px;
     padding: 16px;
     background-color: var(--light-color);
     white-space: initial;
+    justify-content: space-evenly;
   }
-
+ 
   header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
     content: '';
     position: absolute;
@@ -256,13 +283,30 @@ header nav .nav-sections ul > li > ul > li {
     border-right: 8px solid transparent;
     border-bottom: 8px solid var(--light-color);
   }
-
+ 
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
-    padding: 8px 0;
+    /* padding: 8px 0; */
+    padding: 1.25rem;
+  }
+ 
+  header .nav-brand p{
+    justify-content: end;
   }
 }
-
+ 
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
 }
+ 
+@media (width < 900px) {
+  header .nav-brand{
+    display: none;
+  }
+}
+
+.icon-logo{
+  width: 175px;
+  margin-right: 30px;
+}
+ 
