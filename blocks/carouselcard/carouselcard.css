@@ -68,6 +68,13 @@
     display: flex;
   }
 
+  .carouselcard-wrapper{
+    padding-top: 30px;
+  }
+  #top-sellers{
+    text-align: center;
+  }
+
   .carouselcard .carouselcard-slides.hide{
     display: none;
   }

@@ -137,3 +137,6 @@
     text-decoration: underline;
   }
 }
+.columns div{
+  padding-top: 30px;
+}
